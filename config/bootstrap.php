@@ -1,7 +1,5 @@
 <?php
 
-error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
-
 session_start();
 
 /*----------------------------------------
@@ -13,13 +11,17 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
 /*----------------------------------------
- | Register service providers             |
+ | Create service container               |
  ----------------------------------------*/
 $app = new Versyx\Service\Container();
 
+/*----------------------------------------
+ | Register service providers             |
+ ----------------------------------------*/
 $app->register(new Versyx\Providers\LogServiceProvider());
 $app->register(new Versyx\Providers\RouteServiceProvider());
 $app->register(new Versyx\Providers\ViewServiceProvider());
+// $app->register(new App\Providers\AppServiceProvider());
 
 /**
  * service locator method to fetch services from the container
