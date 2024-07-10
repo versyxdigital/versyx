@@ -16,7 +16,5 @@ public/*.ico
 public/*.xml
 public/*.json
 
-composer.lock
-
 !/logs/.gitkeep
 !/public/cache/.gitkeep
