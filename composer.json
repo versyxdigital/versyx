@@ -1,6 +1,7 @@
 {
     "name": "versyx/versyx",
-    "description": "Versyx framework",
+    "version": "0.0.1",
+    "description": "Versyx framework starter project",
     "type": "project",
     "license": "MIT",
     "autoload": {
