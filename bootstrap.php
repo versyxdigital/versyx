@@ -42,7 +42,7 @@ function app(mixed $dependency = null): mixed
 Versyx\Resolver::map(
     $app,
     namespace: 'App\\Controllers',
-    directory: __DIR__ . '/src/Controllers'
+    directory: __DIR__ . '/app/Controllers'
 );
 
 /*----------------------------------------
