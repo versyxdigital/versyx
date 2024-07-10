@@ -7,6 +7,12 @@ use Versyx\Service\ServiceProviderInterface;
 
 class AppServiceProvider implements ServiceProviderInterface
 {
+    /**
+     * Register application services into the container.
+     * 
+     * @param Container $container
+     * @return void
+     */
     public function register(Container $container)
     {
         // Bind and register application services to the container

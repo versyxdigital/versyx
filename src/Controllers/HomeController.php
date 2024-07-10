@@ -5,7 +5,7 @@ namespace App\Controllers;
 use Versyx\Controller;
 
 /**
- * Page controller class.
+ * Home controller class.
  */
 class HomeController extends Controller
 {
