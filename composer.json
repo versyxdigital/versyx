@@ -1,0 +1,32 @@
+{
+    "name": "versyx/versyx",
+    "description": "Versyx framework",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Chris Rowles",
+            "email": "crowles.sdx@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "vlucas/phpdotenv": "^v5.4.1",
+        "versyx/framework": "dev-main"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^v6.0.3",
+        "composer/class-map-generator": "^1.3"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/versyxdigital/framework"
+        }
+    ]
+}

@@ -1,0 +1,123 @@
+{% extends "layout.twig" %}
+
+{% block additional_styles %}
+<style>
+.photo {
+    transform: rotateY(180deg);
+}
+</style>
+{% endblock %}
+
+{% block content %}
+    <div id="content" class="container pt-3 pt-md-0">
+        <div id="splash">
+            <div class="d-flex align-items-center  p-2 gap-3 gap-md-5 img-wrapper">
+                <img src="{{ asset({file: 'model4.jpg'}) }}" class="img rounded-circle photo distort">
+                <div>
+                    <h1 class="main_heading ls-2 text-uppercase mb-2">Chris Rowles</h1>
+                    <h3 class="main_subheading ls-2">Full Stack Developer based in the United Kingdom.</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="blurb" id="about">
+            <div class="blurb-header">About</div>
+            <div class="blurb-content" id="main_about">
+                Hello! I’m Chris, a dedicated and detail-oriented web developer based in Milton Keynes.
+                With over a decade of experience in the field, I bring a wealth of expertise in crafting
+                robust web solutions that exceed client expectations.
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="blurb" id="current-job">
+                    <div class="blurb-header">Current</div>
+                    <div class="blurb-content">
+                        <h4 class="somewhat-big text-muted" id="current_employer">
+                            SentryBay <span class="sub-header">(2022 - present)</span>
+                        </h4>
+                        <h6 class="kinda-small" id="current_position">
+                            Engineering Lead for the ArmoredID Platform
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 order-1">
+                <div class="blurb" id="previous-jobs">
+                    <div class="blurb-header">Previous</div>
+                    <div class="blurb-content">
+                        <h4 class="somewhat-big text-muted">Go Deploy Labs <span class="sub-header">(2020 - 2022)</span></h4>
+                        <h6 class="kinda-small">Principal Developer</h6>
+                        <h4 class="somewhat-big text-muted">Townsweb Archiving <span class="sub-header">(2019 - 2020)</span></h4>
+                        <h6 class="kinda-small">Senior Software Developer</h6>
+                        <h4 class="somewhat-big text-muted">Sodexo <span class="sub-header">(2017 - 2019)</span></h4>
+                        <h6 class="kinda-small">Full Stack Developer</h6>
+                        <h4 class="somewhat-big text-muted">Market Force <span class="sub-header">(2015 - 2017)</span></h4>
+                        <h6 class="kinda-small">Developer</h6>
+                        <h4 class="somewhat-big text-muted">Fastbolt <span class="sub-header">(2012 - 2015)</span></h4>
+                        <h6 class="kinda-small">Systems Administrator</h6>
+                    </div>
+                </div>
+            </div>
+            <!-- TODO switch these around on mobile -->
+            <div class="col-12 col-md-6 order-2 order-md-12">
+                <div class="blurb" id="contact-details">
+                    <div class="blurb-header">Contact</div>
+                    <div class="blurb-content">
+                        <h4 class="somewhat-big text-muted">Email</h4>
+                        <h6 class="kinda-small"><a href="mailto:me@rowles.ch">crowles.sdx@gmail.com</a>
+                        </h6>
+                        <h4 class="somewhat-big text-muted">Phone</h4>
+                        <h6 class="kinda-small"><a href="tel:+447522267722">+44(0)7522 267 722</a>
+                        </h6>
+                        <h4 class="somewhat-big text-muted">GitHub</h4>
+                        <h6 class="kinda-small"><a href="https://github.com/sentrychris">https://github.com/sentrychris</a></h6>
+                        <h4 class="somewhat-big text-muted">LinkedIn</h4>
+                        <h6 class="kinda-small"><a href="https://www.linkedin.com/in/chris-rowles/">https://www.linkedin.com/in/chris-rowles</a></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="blurb" id="code-projects">
+                    <div class="blurb-header">Projects</div>
+                    <div class="blurb-content">
+                        <ul class="list">
+                            <li><a href="https://versyx.net/" target="_blank">Custom web store</a></li>
+                            <li><a href="https://versyxdigital.github.io/mkeditor" target="_blank">MKEditor</a></li>
+                            <li><a href="https://sentrychris.github.io/undeadbytes/" target="_blank">Undead Bytes Game</a></li>
+                            <li><a href="https://github.com/sentrychris/pi-monitor" target="_blank">Raspberry Pi Monitor</a></li>
+                            <li><a href="https://github.com/sentrychris/ffmpeg-transcoder" target="_blank">FFMPeg Transcoder Library</a></li>
+                            <li><a href="https://github.com/sentrychris/circle-buffer" target="_blank">Circle Buffer</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="blurb position-relative" id="blog-posts">
+                    <div class="blurb-header">Latest Posts</div>
+                    <div class="blurb-content">
+                        <ul class="list">
+                            {% if posts is not empty %}
+                                {% for post in posts %}
+                                    <li><a href="/blog/{{ post.id }}/view" target="_blank">{{ post.title }}</a></li>
+                                {%  endfor %}
+                            {% else %}
+                                <li><em class="text-muted">There is nothing here...</em></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="{{ asset({file: 'model3.png'}) }}" id="bg-model"></img>
+{% endblock %}
+
+{% block additional_scripts %}
+{% endblock %}

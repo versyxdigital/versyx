@@ -1,0 +1,23 @@
+services:
+    web:
+        build:
+          context: ./docker
+          dockerfile: Dockerfile
+        container_name: rowles-web
+        ports:
+            - ${HTTP_LOCAL_PORT}:${HTTP_CONTAINER_PORT}
+        volumes:
+            - ./docker/vhosts:/etc/apache2/sites-enabled
+            - .:/var/www/html
+        environment:
+            - APP_ENV=${APP_ENV}
+            - APP_ROOT=${APP_ROOT}
+            - APP_NAME=${APP_NAME}
+            - APP_DEBUG=${APP_DEBUG}
+            - APP_CACHE=${APP_CACHE}
+        networks:
+          - rowles
+
+networks:
+  rowles:
+      driver: bridge
