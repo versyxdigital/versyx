@@ -39,9 +39,11 @@ function app(mixed $dependency = null): mixed
 /*----------------------------------------
  | Load dependency injection              | 
  ----------------------------------------*/
- $namespace = 'App\\Controllers';
- $directory = __DIR__ . '/src/Controllers';
- Versyx\Resolver::map($app, $namespace, $directory);
+Versyx\Resolver::map(
+    $app,
+    namespace: 'App\\Controllers',
+    directory: __DIR__ . '/src/Controllers'
+);
 
 /*----------------------------------------
  | Set exception handler                  |
