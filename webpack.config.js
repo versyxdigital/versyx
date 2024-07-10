@@ -9,7 +9,7 @@ module.exports = {
         './resources/assets/scss/app.scss'
     ],
     output: {
-        filename: 'js/rowles.bundle.min.js',
+        filename: 'js/app.min.js',
         path: path.resolve(__dirname, 'public'),
     },
     watchOptions: {
@@ -23,7 +23,7 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'css/rowles.bundle.min.css',
+            filename: 'css/app.min.css',
             chunkFilename: 'css/[id].css'
         })
     ],

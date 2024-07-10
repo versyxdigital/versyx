@@ -3,53 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    {% block meta_tags %}
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="I'm Chris Rowles, a Full Stack Developer based in the United Kingdom. Get in touch for a free quote on your project, I would love to help!">
-        <meta name="author" content="Chris Rowles">
 
-        <meta property="og:title" content="Chris Rowles | Full Stack Developer" />
-        <meta property="og:description" content="I'm Chris Rowles, a Full Stack Developer based in the United Kingdom. Get in touch for a free quote on your project, I would love to help!">
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://versyx.dev/images/meta.png" />
-        <meta property="og:url" content="https://versyx.dev" />
-    {% endblock %}
-
-    <link rel="stylesheet" href="{{ asset({file: 'rowles.bundle.min.css'}) }}">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/SplitText.min.js"></script>
+    <link rel="stylesheet" href="{{ asset({file: 'app.min.css'}) }}">
 
     <title>{{ title }}</title>
     {% block additional_styles %}{% endblock %}
 </head>
-<body class="montserrat">
-<nav class="navbar navbar-expand-lg d-none d-md-flex">
-    <div class="container">
-        <a class="navbar-brand me-4" href="/">
-            <div id="logo" class="bg-dark text-white"> CR </div>
-        </a>
-        <div class="collapse navbar-collapse" id="site-navbar">
-            <ul class="navbar-nav ms-auto gap-2">
-                <li class="nav-item"><a class="nav-link" href="https://github.com/sentrychris"><i class="fab fa-github fa-2xl"></i></a></li>
-                <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/chris-rowles/"><i class="fab fa-linkedin fa-2xl"></i></a></li>
-                <li class="nav-item"><a class="nav-link" href="mailto:crowles.sdx@gmail.com"><i class="fa fa-envelope fa-2xl"></i></a></li>
-                {% if session.authenticated %}
-                    <li class="nav-item ms-3"><a class="nav-link" href="/logout"><i class="fa fa-power-off text-danger fa-2xl"></i></a></li>
-                {% endif %}
-            </ul>
-        </div>
-    </div>
-</nav>
+<body>
 
-<main id="content-wrapper" data-scroll>
+<main>
     {% block content %}{% endblock %}
 </main>
-
-<footer id="footer" class="mt-1 bg-dark border-top border-dark text-white">
-    Made with <i class="fa fa-heart love"></i> by CR
-</footer>
-<script type="text/javascript" src="{{ asset({file: 'rowles.bundle.min.js'}) }}"></script>
+<script type="text/javascript" src="{{ asset({file: 'app.min.js'}) }}"></script>
 {% block additional_scripts %}{% endblock %}
 </body>
 </html>
