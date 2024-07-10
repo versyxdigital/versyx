@@ -11,8 +11,7 @@ class HomeController extends Controller
 {
     /**
      * Render the home page.
-     *
-     * @param array $data
+     * 
      * @return mixed
      */
     public function index()
