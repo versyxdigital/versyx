@@ -37,7 +37,7 @@ function app(mixed $dependency = null): mixed
 }
 
 /*----------------------------------------
- | Load resolver                          | 
+ | Load dependency injection              | 
  ----------------------------------------*/
  $namespace = 'App\\Controllers';
  $directory = __DIR__ . '/src/Controllers';
