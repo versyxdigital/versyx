@@ -22,7 +22,7 @@ $app->register(new Versyx\Providers\RouteServiceProvider());
 $app->register(new Versyx\Providers\ViewServiceProvider());
 
 /**
- * boot method to fetch services from the container
+ * service locator method to fetch services from the container
  *
  * @param mixed $dependency
  * @return mixed
