@@ -5,9 +5,9 @@ session_start();
 /*----------------------------------------
  | Auto-load classes                      |
  ----------------------------------------*/
-require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 /*----------------------------------------
@@ -39,7 +39,9 @@ function app(mixed $dependency = null): mixed
 /*----------------------------------------
  | Load resolver                          | 
  ----------------------------------------*/
-require_once __DIR__.'/../config/resolver.php';
+ $namespace = 'App\\Controllers';
+ $directory = __DIR__ . '/src/Controllers';
+ Versyx\Resolver::map($app, $namespace, $directory);
 
 /*----------------------------------------
  | Set exception handler                  |
