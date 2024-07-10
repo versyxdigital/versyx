@@ -2,7 +2,7 @@
 
 ## About Versyx
 
-This is the starter skeleton for projects using [Versyx](#).
+This is the starter skeleton for projects using [Versyx](https://github.com/versyxdigital/framework).
 
 Versyx is a lightweight PHP framework suitable for developing web applications. It is a small-yet-powerful framework that comes with many features to aid in development, such as:
 
@@ -70,4 +70,59 @@ docker-compose up -d
 
 Once the container is running, head over to http://localhost to view your application, don't forget to add the port number if you have changed the value of `HTTP_LOCAL_PORT` to something other than the default port 80.
 
+## How it works
 
+Versyx follows the MVC pattern and uses a service container with powerful dependency injection in order to make development a breeze.
+
+### Application Services
+
+#### The Service Container
+
+The [service container](https://github.com/versyxdigital/framework/blob/main/src/Service/Container.php) is a core component of Versyx, designed to manage the registration and resolution of application services.
+
+The service container facilitates dependency injection ensuring services are decoupled and easily testable, and singleton support to ensure single instances through the application lifecycle.
+
+#### Service Providers
+
+Application services are created and registered to the container through [service providers](https://github.com/versyxdigital/framework/blob/main/src/Service/ServiceProviderInterface.php) using the `register()` method.
+
+For example, here is Versyx's [ViewServiceProvider](https://github.com/versyxdigital/framework/blob/main/src/Providers/ViewServiceProvider.php)'s service registration:
+
+```php
+public function register(Container $container): Container
+{
+  $container[ViewEngineInterface::class] = new TwigEngine();
+  return $container;
+}
+```
+
+It creates a new view rendering service and binds it to the `ViewEngineInterface` contract in the container.
+
+Service providers are instantiated inside the application's bootstrapping script and passed to the service container's `register()` method. Here is the registration for the view service provider:
+
+```php
+$app = new Versyx\Service\Container();
+...
+$app->register(new Versyx\Providers\ViewServiceProvider());
+...
+```
+
+
+#### Service Resolution
+
+Application services can be resolved from the container in two ways:
+
+**Service locator**
+```php
+public function foo () {
+  return app(MyService::class)->myServiceMethod('bar');
+}
+```
+
+**Dependency Injection**
+
+```php
+public function foo (MyService $service) {
+  return $service->myServiceMethod('bar');
+}
+```
