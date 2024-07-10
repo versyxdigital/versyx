@@ -56,5 +56,3 @@ foreach ($classes as $class) {
         }
     }
 }
-
-dd($app);

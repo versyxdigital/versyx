@@ -16,5 +16,7 @@ public/*.ico
 public/*.xml
 public/*.json
 
-!/logs/README.md
+composer.lock
+
+!/logs/.gitkeep
 !/public/cache/.gitkeep
