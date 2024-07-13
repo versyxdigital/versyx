@@ -18,7 +18,10 @@
     "minimum-stability": "dev",
     "require": {
         "vlucas/phpdotenv": "^v5.4.1",
-        "versyx/framework": "dev-main"
+        "versyx/framework": "dev-main",
+        "doctrine/orm": "^3.2",
+        "doctrine/dbal": "^4.0",
+        "symfony/cache": "^7.1"
     },
     "require-dev": {
         "symfony/var-dumper": "^v6.0.3",
