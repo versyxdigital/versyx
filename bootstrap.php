@@ -15,15 +15,7 @@ $app = new Versyx\Service\Container();
 /*----------------------------------------
  | Register service providers             |
  ----------------------------------------*/
-$app->register(new Versyx\Providers\SessionServiceProvider());
-$app->register(new Versyx\Providers\LogServiceProvider());
-$app->register(new Versyx\Providers\RouteServiceProvider());
-$app->register(new Versyx\Providers\DatabaseServiceProvider());
-$app->register(new Versyx\Providers\ViewServiceProvider());
-
-/*----------------------------------------
- | Register custom providers              |
- ----------------------------------------*/
+$app->register(new Versyx\Providers\AppServiceProvider());
 // $app->register(new App\Providers\AppServiceProvider());
 
 /**
@@ -44,8 +36,8 @@ function app(mixed $dependency = null): mixed
  ----------------------------------------*/
 Versyx\Resolver::map(
     $app,
-    namespace: 'App\\Controllers',
-    directory: __DIR__ . '/app/Controllers'
+    namespace: 'App\\Http\\Controllers',
+    directory: __DIR__ . '/app/Http/Controllers'
 );
 
 /*----------------------------------------
