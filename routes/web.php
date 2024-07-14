@@ -5,5 +5,11 @@
  ----------------------------------------*/
  
 return [
-  ['GET', '/', [App\Http\Controllers\HomeController::class, 'index']]
+    '/' => [
+        ['GET', '/', [App\Http\Controllers\HomeController::class, 'index']]
+    ],
+
+    // '/prefix' => [
+    //    // ...
+    // ],
 ];
