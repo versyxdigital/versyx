@@ -15,7 +15,7 @@
             "email": "crowles.sdx@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "vlucas/phpdotenv": "^v5.4.1",
         "versyx/framework": "dev-main",

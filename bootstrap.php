@@ -1,7 +1,4 @@
 <?php
-
-session_start();
-
 /*----------------------------------------
  | Auto-load classes                      |
  ----------------------------------------*/
@@ -18,9 +15,15 @@ $app = new Versyx\Service\Container();
 /*----------------------------------------
  | Register service providers             |
  ----------------------------------------*/
+$app->register(new Versyx\Providers\SessionServiceProvider());
 $app->register(new Versyx\Providers\LogServiceProvider());
 $app->register(new Versyx\Providers\RouteServiceProvider());
+$app->register(new Versyx\Providers\DatabaseServiceProvider());
 $app->register(new Versyx\Providers\ViewServiceProvider());
+
+/*----------------------------------------
+ | Register custom providers              |
+ ----------------------------------------*/
 // $app->register(new App\Providers\AppServiceProvider());
 
 /**

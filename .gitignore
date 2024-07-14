@@ -5,7 +5,8 @@ node_modules
 vendor
 
 .env
-logs/*
+storage/logs/*
+storage/session/*
 public/cache/*
 public/css
 public/images
@@ -16,5 +17,6 @@ public/*.ico
 public/*.xml
 public/*.json
 
-!/logs/.gitkeep
+!/storage/logs/.gitkeep
+!/storage/session/.gitkeep
 !/public/cache/.gitkeep
