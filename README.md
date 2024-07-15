@@ -2,6 +2,8 @@
 
 ## About Versyx
 
+![image](./welcome.png)
+
 This is the starter skeleton for projects using [Versyx](https://github.com/versyxdigital/framework).
 
 Versyx is a lightweight PHP framework suitable for developing web applications. It is a small-yet-powerful framework that comes with many features to aid in development, such as:
