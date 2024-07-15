@@ -13,7 +13,7 @@ class AppServiceProvider implements ServiceProviderInterface
      * @param Container $container
      * @return void
      */
-    public function register(Container $container)
+    public function register(Container $container): Container
     {
         // Bind and register application services to the container
         // e.g. $container[ApiClientInterface::class] = new ApiClient(...);
