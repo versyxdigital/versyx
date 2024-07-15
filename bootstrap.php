@@ -1,4 +1,5 @@
 <?php
+
 /*----------------------------------------
  | Auto-load classes                      |
  ----------------------------------------*/
@@ -42,15 +43,6 @@ function config (string $key, string $default = null): mixed
 {
     return app('config')->get($key, $default);
 }
-
-/*----------------------------------------
- | Load dependency injection              | 
- ----------------------------------------*/
-Versyx\Resolver::map(
-    $app,
-    namespace: 'App\\Http\\Controllers',
-    directory: __DIR__ . '/app/Http/Controllers'
-);
 
 /*----------------------------------------
  | Set exception handler                  |
