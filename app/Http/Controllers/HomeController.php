@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Versyx\Controller;
+use Versyx\Http\AbstractController;
 
 /**
  * Home controller class.
  */
-class HomeController extends Controller
+class HomeController extends AbstractController
 {
     /**
      * Render the home page.
