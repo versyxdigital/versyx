@@ -24,11 +24,23 @@ $app->register(new Versyx\Providers\AppServiceProvider());
  * @param mixed $dependency
  * @return mixed
  */
-function app(mixed $dependency = null): mixed
+function app (mixed $dependency = null): mixed
 {
     global $app;
     if (!$dependency) return $app;
     return $app->offsetExists($dependency) ? $app->offsetGet($dependency) : false;
+}
+
+/**
+ *  App configuration API access method
+ *
+ * @param string $key
+ * @param ?string $default
+ * @return mixed
+ */
+function config (string $key, string $default = null): mixed
+{
+    return app('config')->get($key, $default);
 }
 
 /*----------------------------------------
