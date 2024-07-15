@@ -39,7 +39,6 @@ Copy the `.env.example` file that is provided to `.env` and configure your appli
 
 ```sh
 APP_NAME="My App"
-APP_ROOT="/var/www/html"
 
 APP_ENV=development # or "production"
 APP_DEBUG=true
