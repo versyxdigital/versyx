@@ -16,6 +16,6 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        return $this->view('home');
+        return $this->view('home', ['name' => config('app.name')]);
     }
 }
