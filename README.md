@@ -35,28 +35,24 @@ composer create-project versyx/versyx my-app
 
 Once the project has been created, you're ready to begin configuring your application.
 
-Copy the `.env.example` file that is provided to `.env` and configure your application's environment variables:
+Copy the `.env.example` file that is provided to `.env` and configure your application's environment variables, for example:
 
 ```sh
-# The name of your application, can be used in various places such as templates
 APP_NAME="My App"
-
-# The absolute path to the root of your application, used by Versyx's default
-# routing and logging service providers to resolve paths to your application
-# route and log files respectively.
 APP_ROOT="/var/www/html"
 
-# When set to true, Versyx's error handler will print exceptions.
+APP_ENV=development # or "production"
 APP_DEBUG=true
+APP_CACHE=true
 
-# When set to true, compiled twig templates will be cached.
-APP_CACHE=false
+SESSION_DRIVER=file # or "database", "memory"
 
-# Sets the host port for the docker container
-HTTP_LOCAL_PORT=80
-
-# Sets the container port for the docker container
-HTTP_CONTAINER_PORT=80
+DB_DRIVER=pdo_mysql
+DB_HOST=versyx-db # if using docker, this is the name of the container
+DB_USERNAME=root
+DB_PASSWORD=password
+DB_DATABASE=versyx
+MYSQL_ROOT_PASSWORD=password
 ```
 
 Now you are ready!
