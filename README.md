@@ -11,6 +11,7 @@ Versyx is a lightweight PHP framework suitable for developing web applications. 
 - A powerful dependency injection container.
 - Built-in routing with support for API and web routes.
 - Session management with support for multiple drivers.
+- Database management with support for multiple drivers.
 - PSR-7 compliant request handling and view rendering.
 - PSR-3 compliant application logging.
 
@@ -204,4 +205,79 @@ class HomeController extends AbstractController
 
 #### Which should you use?
 
-Both patterns have their place in software development, but dependency injection is generally preferred due to its advantages in decoupling, testability, and clarity. Service locator can be useful in scenarios where centralising the management of dependencies is necessary, but it should be used with caution due to its tendency to obscure dependencies and increase coupling. 
+Both patterns have their place in software development, but dependency injection is generally preferred due to its advantages in decoupling, testability, and clarity. Service locator can be useful in scenarios where centralising the management of dependencies is necessary, but it should be used with caution due to its tendency to obscure dependencies and increase coupling.
+
+## Routing
+
+For routing requests, under the hood, Versyx uses Nikita Popov's [FastRoute](#https://github.com/nikic/FastRoute). Application routes are defined in the "routes" directory:
+
+- `routes/web.php`: For web routes.
+- `routes/api.php`: For API routes.
+
+Routes are structured in the following format:
+
+```php
+/*----------------------------------------
+ | Configure application web routes       |
+ ----------------------------------------*/
+
+return [
+    '/' => [
+        ['GET', '/', [App\Http\Controllers\HomeController::class, 'index']]
+    ],
+
+    '/products' => [
+        ['GET', '/', [App\Http\Controllers\ProductController::class, 'index']]
+        ['GET', '/{id}', [App\Http\Controllers\ProductController::class, 'show']]
+    ],
+];
+```
+
+Where the outer-array keys contains the path prefix and the values are arrays consisting of:
+
+- Request method (e.g. `GET`, `PUT`, `POST`, `DELETE`).
+- Route handler (e.g. `App\Http\Controllers\ProductController::class`).
+- Route handler method (e.g. `index` or `show`).
+
+### Route handling
+
+Requests to routes are handled via **controllers**, for a simple example, consider this `ProductController`, designed to service the product routes:
+
+```php
+namespace MyApp\Http\Controllers;
+
+use Doctrine\ORM\EntityManager;
+use Versyx\Http\AbstractController;
+use MyApp\Entities\Product;
+
+class ProductController extends AbstractController
+{
+    /**
+     * List products - /products
+     */
+    public function index(EntityManager $em) {
+        $products = $em->getRepository(Product::class)
+            ->findAll();
+                
+        return $this->view('products/index', compact('products'));
+    }
+
+    /**
+     * Show product - products/{id}
+     */
+    public function show(int $id, EntityManager $em) {
+        $product = $em->getRepository(Product::class)
+            ->find($id);
+                
+        return $this->view('products/show', compact('product'));
+    }
+}
+```
+
+Here is an explanation of how it works:
+
+- The controller's `index` method handles requests to the `/products` route, Doctrine's `EntityManager` is injected into the method to provide access to the database and obtain products to return with the view which is located at `resources/views/products/index.twig`.
+
+- The controller's `show` method handles requests to the `/products/{id}` route, it accepts a **path parameter (ID)** and also injects the `EntityManager` for access to the database. The product is queried by its ID and returned with the view which is located at `resources/views/products/show.twig`.
+
+> NOTE: The order of injected arguments in route handler methods don't matter, this is because Versyx leverages reflection to inspect the method paramters and resolve each dependency individually
